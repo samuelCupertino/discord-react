@@ -9,23 +9,23 @@ const ChannelData: React.FC = () => {
 
     useEffect(() => {
         const div = messagesRef.current
-
-        if(div) {
-            div.scrollTop = div.scrollHeight
-        }
+        if(div) { div.scrollTop = div.scrollHeight }
     }, [messagesRef])
 
     return (
         <Container>
             
             <Messages>
-                {[...Array(16)].map(() => (
+                {
+                    [...Array(16)].map(() => (
                         <ChannelMessage 
                             author="Samuel Cupertino"
                             date="02/11/2021"
                             content="Olá, mundo!"
                         />
-                ))}
+                    ))
+                }
+
                 <ChannelMessage 
                     author="Eu Robô"
                     date="02/11/2021"

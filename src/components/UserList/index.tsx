@@ -6,46 +6,26 @@ interface UserProps {
     isBot?: boolean
 }
 
-const UserRow: React.FC<UserProps> = ({nickname, isBot}) => {
-    return (
-        <User>
-            <Avatar className={isBot ? 'bot' : ''} />
+const UserRow: React.FC<UserProps> = ({nickname, isBot}) => (
+    <User>
+        <Avatar className={isBot ? 'bot' : ''} />
+        <strong>{nickname}</strong>
+        { isBot && <span>Bot</span> }
+    </User>
+)
 
-            <strong>{nickname}</strong>
+const UserList: React.FC = () => (
+    <Container>
+        <Role>Disponível - 1</Role>
+        <UserRow nickname="Samuel Cupertino" />
 
-            {isBot && <span>Bot</span>}
-        </User>
-    )
-}
+        <Role>Offline - 20</Role>
+        <UserRow nickname="Amigo" isBot/>
 
-const UserList: React.FC = () => {
-    return (
-        <Container>
-            <Role>Disponivel - 1</Role>
-            <UserRow nickname="Samuel Cupertino" />
-
-            <Role>Offline - 18</Role>
-            <UserRow nickname="Amigo" isBot/>
-            <UserRow nickname="Amigo" />
-            <UserRow nickname="Amigo" />
-            <UserRow nickname="Amigo" />
-            <UserRow nickname="Amigo" />
-            <UserRow nickname="Amigo" />
-            <UserRow nickname="Amigo" />
-            <UserRow nickname="Amigo" />
-            <UserRow nickname="Amigo" />
-            <UserRow nickname="Amigo" />
-            <UserRow nickname="Amigo" />
-            <UserRow nickname="Amigo" />
-            <UserRow nickname="Amigo" />
-            <UserRow nickname="Amigo" />
-            <UserRow nickname="Amigo" />
-            <UserRow nickname="Amigo" />
-            <UserRow nickname="Amigo" />
-            <UserRow nickname="Amigo" />
-            <UserRow nickname="Amigo" />
-        </Container>
-    )
-}
+        {
+            [...Array(19)].map(()=> <UserRow nickname="Amigo" /> )
+        }
+    </Container>
+)
 
 export default UserList
